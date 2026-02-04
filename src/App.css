@@ -1,38 +1,199 @@
-.App {
-  text-align: center;
-}
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+/* -------------------- General Styles -------------------- */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #74ebd5, #9face6); /* Nice subtle gradient */
   min-height: 100vh;
+}
+
+.container {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  background:#fff;
+  border-radius:10px;
+  box-shadow:0 8px 20px rgba(0,0,0,0.15)
+ 
+}
+
+.container.dark {
+  background-color: #121212;
+  color: #f0f2f5;
+}
+
+/* -------------------- Card -------------------- */
+.card {
+  background-color: #fff;
+  padding: 25px;
+  border-radius: 10px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  transition: background 0.3s, color 0.3s;
+}
+
+.container.dark .card {
+  background-color: #1f1f1f;
+  color:#f0f2f5
+}
+
+/* -------------------- Header -------------------- */
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* -------------------- Controls -------------------- */
+.controls {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.controls input,
+.controls select,
+.controls button {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.container.dark .controls input,
+.container.dark .controls select {
+  background-color: #2a2a2a;
+  color: #f0f2f5;
+  border: 1px solid #555;
+}
+
+.controls input:focus,
+.controls select:focus {
+  border-color: #007bff;
+}
+
+.controls button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+.controls button:hover {
+  background-color: #0056b3;
+}
+
+/* -------------------- Export Button -------------------- */
+.export-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+  background-color: #27ae60;
   color: white;
+  font-weight: bold;
+  cursor: pointer;
+  margin-bottom: 15px;
+  transition: background 0.3s;
 }
 
-.App-link {
-  color: #61dafb;
+.export-btn:hover {
+  background-color: #219150;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
+/* -------------------- Task List -------------------- */
+.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f9f9f9;
+  padding: 12px 15px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.container.dark .task-list li {
+  background-color: #2a2a2a;
+}
+
+/* -------------------- Completed Task -------------------- */
+.task.completed div {
+  text-decoration: line-through;
+  opacity: 0.6;
+}
+
+/* -------------------- Priority Colors -------------------- */
+.task.high {
+  border-left: 5px solid #e74c3c;
+}
+
+.task.medium {
+  border-left: 5px solid #f1c40f;
+}
+
+.task.low {
+  border-left: 5px solid #2ecc71;
+}
+
+/* -------------------- Overdue Task -------------------- */
+@keyframes pulse {
+  0% { box-shadow: 0 0 0px crimson; }
+  50% { box-shadow: 0 0 15px crimson; }
+  100% { box-shadow: 0 0 0px crimson; }
+}
+
+.task.overdue {
+  background-color: #ffcccc;
+  border-left: 5px solid crimson;
+  animation: pulse 1.5s infinite;
+}
+
+.container.dark .task.overdue {
+  background-color: #8b1c1c;
+}
+
+/* -------------------- Delete Button -------------------- */
+.task-list li button {
+  padding: 6px 12px;
+  border-radius: 5px;
+  border: none;
+  background-color: #e74c3c;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.task-list li button:hover {
+  background-color: #c0392b;
+}
+
+/* -------------------- Dark Mode Toggle -------------------- */
+.dark-toggle {
+  margin-bottom: 15px;
+  padding: 10px;
+  border-radius: 6px;
+  border: none;
+  background-color: #34495e;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 100%;
+}
+
+.dark-toggle:hover {
+  background-color: #2c3e50;
+}
+
+/* -------------------- Responsive -------------------- */
+@media (max-width: 600px) {
+  .controls {
+    flex-direction: column;
   }
 }
